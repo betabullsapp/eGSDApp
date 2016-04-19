@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>egsd</title>
+     
+	 <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="js/jquery-2.1.4.js"></script>
+     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+
+</head>
+<body onload="myFunction()">
+<!--<div class="section navbar-top headerbg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+		  <h1 class="text-center backIconHover align" ><a class="btn pull-left" href="index.html"><i class="fa fa-chevron-circle-left"></i> </a><a href="#"></a></h1>
+            <h1 class="text-center logo-font"><img class="img" src="img/logo.jpg"/> eGSD</h1>
+          </div>
+        </div>
+      </div>
+    </div>-->
+	
+<div class="section navbar headerBackground">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+		   <h1 class="text-center backIconHover align" ><a class="btn pull-left" href="home.html" style="display:none;"><i class="fa fa-chevron-circle-left"> Back</i> </a><a href="#"></a></h1>
+            <h1 class="text-center backIconHover locationpadding" id="location"></h1>
+			<p class="text-center backIconHover">Guest Services Directory</p>
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="section navbar text-center home-navbar">
+		<a href=""><i class="fa fa-home fa-2x fonticon iconcolor"></i></a>  
+		<!-- <i class="fa fa-bed fa-2x fonticon iconcolor"></i> -->
+		<i class="fa fa-shopping-cart fa-2x fonticon iconcolor" id="food"></i>
+		<i class="fa fa-briefcase fa-2x fonticon iconcolor" id="transport"></i>
+		<i class="fa fa-shirtsinbulk fa-2x fonticon iconcolor" id="banking"></i>
+		<a href="index.html"> <i class="fa fa-search fa-2x fonticon iconcolor"></i> </a>
+	</div> 
+ 
+
+	 <div class="section">
+      <div>
+        <div class="row">
+          <div class="col-md-12 text-center yourSearch">
+           
+              <input type="text"  onfocus="this.placeholder = ''" id="textbox">
+			<a id="search" class="btn"> <i  class="glyphicon glyphicon-search" style="color:white;font-size:24px;margin-left: -10px" ></i></a>
+			 <!--  <img src="./images/download.png" > -->
+             
+           </div>
+	     </div>
+      </div>
+    </div>
+	<div class="section picImageSection fixed-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ">
+		   
+           <img class="center-block img-responsive img-rounded margin" id="locationhotellogo">
+          </div>
+        </div>
+      </div>
+    </div
+	 <div class="section picImageSection fixed-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ">
+		     <img class="logo center-block img-responsive img-rounded margin" id="locationlogo">
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center " id="locationmessage">
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="section" id="titledir">
+     
+        <!-- <div class="row">
+	
+			<span class="menudir"><img  src="./images/Logo1.png" class="dirlogo"></span>
+			<span><button class="dirbutton">hello</button></span>
+        </div>
+		<div class="row">
+	
+			<span class="menudir"><img  src="./images/Logo1.png" class="dirlogo"></span>
+			<span><button class="dirbutton">hello</button></span>
+			
+        </div> -->
+
+    </div>
+  
+	
+	
+	<!-- <div style="height:10px;"></div>
+    <div class="section directories">
+      <div>
+        <div class="row">
+          <div class="col-md-12 listHoverEffects " >
+			 -->
+           <!-- <ul >
+              <li class="mainStyleList">A</li>
+              <a href="atm.html"><li class="normalListStyle" id="atm" >ATM<i class="fa fa-chevron-right pull-right"></i></li></a>
+              <a href="airport.html"><li class="normalListStyle">Airport<i class="fa fa-chevron-right pull-right"></i></li></a>
+
+              <li class="mainStyleList">B</li>
+              <a href="#"><li class="normalListStyle">Business Center  <i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">Open 24 hours</p></li></a>
+            
+              <li class="mainStyleList">C</li>
+              <a href="#"><li class="normalListStyle">Concierge<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">Desk Open 24 hours</p></li></a>
+              <a href="#"><li class="normalListStyle">Conference Center<i class="fa fa-chevron-right pull-right"></i></li></a>
+              <a href="#"><li class="normalListStyle">Convention Services<i class="fa fa-chevron-right pull-right"></i></li></a>
+
+              <li class="mainStyleList">D</li>
+              <a href="#"><li class="normalListStyle">Dining<i class="fa fa-chevron-right pull-right"></i></li></a>
+			 
+			   <li class="mainStyleList">E</li>
+              <a href="#"><li class="normalListStyle">Emergency<i class="fa fa-chevron-right pull-right"></i></li></a>
+			   
+			   <li class="mainStyleList">F</li>
+              <a href="#"><li class="normalListStyle">Fitness Center<i class="fa fa-chevron-right pull-right"></i></li></a>
+			 
+			 <li class="mainStyleList">G</li>
+              <a href="#"><li class="normalListStyle">Gift Shop<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">Open Daily 7 a.m-10 p.m</p></li></a>
+              <a href="#"><li class="normalListStyle"> Golf<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">Please Reserve Tee Time</p></li></a>
+              <a href="#"><li class="normalListStyle">Guest Services<i class="fa fa-chevron-right pull-right"></i></li></a>
+             
+			   <li class="mainStyleList">H</li>
+              <a href="#"><li class="normalListStyle">Hospital<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">1 Mile - Jhonson Blvd </p></li></a>
+              <a href="#"><li class="normalListStyle">Housekeeping<i class="fa fa-chevron-right pull-right"></i></li></a>
+              
+			  <li class="mainStyleList">P</li>
+              <a href="#"><li class="normalListStyle">Pharmacy<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">2 Block Berry St.</p></li></a>
+              <a href="#"><li class="normalListStyle">Pool<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">Open 6 am -11 pm</p></li></a>
+              
+			  <li class="mainStyleList">R</li>
+              <a href="#"><li class="normalListStyle">Recreation<i class="fa fa-chevron-right pull-right"></i></li></a>
+              <a href="#"><li class="normalListStyle">Rental Car<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">First Rent - A- Car</p></li></a>
+            
+			<li class="mainStyleList">s</li>
+              <a href="#"><li class="normalListStyle">Sales<i class="fa fa-chevron-right pull-right"></i></li></a>
+              <a href="#"><li class="normalListStyle">Security<i class="fa fa-chevron-right pull-right"></i></li></a>
+              <a href="#"><li class="normalListStyle">Shopping Local<i class="fa fa-chevron-right pull-right"></i></li></a>
+			  <a href="#"><li class="normalListStyle">Spa<i class="fa fa-chevron-right pull-right"></i><p style="font-size:11px">Open Daily 7 am -10 pm</p></li></a>
+
+			  <li class="mainStyleList">T</li>
+              <a href="#"><li class="normalListStyle">Transportation<i class="fa fa-chevron-right pull-right"></i></li></a>
+
+			  <li class="mainStyleList">W</li>
+              <a href="#"><li class="normalListStyle">WI-FI<i class="fa fa-chevron-right pull-right"></i></li></a>
+
+
+
+
+
+            </ul>-->
+            
+          <!-- </div>
+        </div>
+      </div>
+    </div> -->
+
+	<div ><center><img id="footerimage" class="footer"></center></div>
+
+	<!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>-->
+	<script src="js/location.js"></script>
+   
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        
+     <script src="http://www.parsecdn.com/js/parse-1.2.8.min.js"></script>
+	 <br>
+</body>
+</html>
