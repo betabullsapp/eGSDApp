@@ -16,8 +16,8 @@
 		});
 			var hotelresult=localStorage.getItem('Hotel');
 			var hRes=JSON.parse(hotelresult);
-			console.log(hRes.length)
-			if((hRes.length>0)&&(hRes[0].objectId==id)){
+			//console.log(hRes.length)
+			if((hRes!=null)&&(hRes.length>0)&&(hRes[0].objectId==id)){
 			//localstorage hotel	
 			  showHotel();
 			}else{
