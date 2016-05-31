@@ -16,11 +16,13 @@
 		});
 			var hotelresult=localStorage.getItem('Hotel');
 			var hRes=JSON.parse(hotelresult);
-			if((hRes!=null)&&(hRes[0].objectId==id)){
+			console.log(hRes.length)
+			if((hRes.length>0)&&(hRes[0].objectId==id)){
 			//localstorage hotel	
 			  showHotel();
 			}else{
 				localStorage.clear();
+				
 					  Parse.initialize(PARSE_APP,PARSE_JS);
 					 //getting hotel info 
 					   var locItem = Parse.Object.extend("Location");
@@ -221,10 +223,11 @@
 							  sItemQuery.find({
 							   success: function(sRes){
 								   localStorage.setItem('Style',JSON.stringify(sRes));
+								    showHotel()
 							   }
 							  });
 						  }).then(function(){
-							  showHotel()
+							 
 						  });
 										
 			}
