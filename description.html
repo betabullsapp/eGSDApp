@@ -13,26 +13,81 @@
 	 <script src="js/jquery-2.1.4.js"></script>
      <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
 </head>
-<body onload="myDescription()">
+<body onload="myDescription()" id="locationbackground">
 <div class="section navbar headerBackground">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-		   <h1 class="text-center backIconHover align" ><a class="btn pull-left" onclick="funback()"><i class="fa fa-chevron-circle-left backbutton"> Back</i> </a><a href="#"></a></h1>
-            <h1 class="text-center backIconHover" id="location"></h1>
-			<p class="text-center backIconHover guest">Guest Services Directory</p>
+		   <h1 class="text-center backIconHover align" ><a class="btn" onclick="funback()" ><i class="fa fa-chevron-circle-left backbutton"> <text style="font-family:Arial;">Back</text></i> </a><a href="#"></a></h1>
+		   </div>
+		   <div class="col-md-12">
+            <p class="text-center backIconHover" id="location"></p>
+			<p class="text-center backIconHover guest" id="locationcaption" class="locSubHeadStyle"></p>
           </div>
         </div>
       </div>
     </div>
-	<div class="section navbar text-center home-navbar">
+	<div class="section navbar  home-navbar menuicon">
+		<div class="dropdown iconlist">
+					<img onclick="showdropdown()"   src="images/icons/menu.png"class="iconimg dropbtn">
+					  <div id="myDropdown" class="dropdown-content menuItems">
+						 <!-- <a class="parentid" ><img src="images/icons/home.png" class="iconimg" title="Home"><br>Home</a> -->
+						 <a class="parentid" >Home</a>
+						<!-- <a id="locationMaidDesk"><img src="images/icons/maidservice.png" class="iconimg" title="Maid Service"><br>Maid Service</a>
+						 <a href="#home"><img src="images/icons/taxi.png" class="iconimg" title="Taxi"><br>Taxi</a>
+						 <a id="locationBellDesk"><img src="images/icons/baggage.png" class="iconimg" title="Bellman/Baggage"><br>Bellman/Baggage</a>
+						 <a id="locationLocalAttractions"><img src="images/icons/map.png" class="iconimg" title="Local Attractions"><br>Local Attractions</a>
+						 <a id="locationHotelDirectory"><img src="images/icons/directory.png" class="iconimg" title="Hotel Directory"><br>Hotel Directory</a> -->
+						 
+					  </div>
+			 <a class="parentid"><img src="images/icons/home.png" class="iconimg" title="Home"></a>
+			<!-- <a  id="locationFrontDesk"><img src="images/icons/frontdesk.png" class="iconimg "title="Service/Frontdesk"></a>
+			<a><img src="images/icons/phone.png" class="iconimg" title="Housephone"></a>
+						 <a id="locationEmergency"><img src="images/icons/soss.png" class="iconimg" title="Emergency"></a> --> 
+		</div>
+	</div>
+
+	
+  <div class="section">
+      <div>
+        <div class="row">
+          <div class="col-md-12 text-center yourSearch">
+           
+              <input type="text"  onfocus="this.placeholder = ''" id="textbox">
+			<a id="search" class="btn"> <i  class="glyphicon glyphicon-search" style="color:white;font-size:24px;margin-left: -10px;  margin-top:-6px !Important" ></i></a>
+			  <hr style="height:1px; background-color:#fff;margin-top:5px !important; margin-bottom:5px !important">
+			 <!--  <img src="./images/download.png" > -->
+             
+           </div>
+	     </div>
+      </div>
+    </div>
+	<div id="titlecaption"></div>
+	<div id="titleimage"></div>
+	<div id="timings"></div>
+	<div id="description"></div>
+	<div class="section"> <p id="phone"></p></div>
+	 <p id="menu"></p>
+	<div class="section" id="titledir"></div>
+	
+	<!-- <div class="section" style="background:#ffffff;" >
+      <div class="container"  >
+        <div class="row" >
+          <div class="col-md-12 text-center " style="font-color:black;" >
+			hekehfk<br>kkvfbg
+          </div>
+        </div>
+      </div> 
+    </div> -->
+	
+	<!-- <div class="section navbar text-center home-navbar">
 		<a class="parentid"><i class="fa fa-home fa-2x fonticon iconcolor"></i>  </a>
 		<i class="fa fa-shopping-cart fa-2x fonticon iconcolor" id="food"></i>
-		<!-- <i class="fa fa-bed fa-2x fonticon iconcolor"></i> -->
+		
 		<i class="fa fa-briefcase fa-2x fonticon iconcolor" id="transport"></i>
 		<i class="fa fa-shirtsinbulk fa-2x fonticon iconcolor" id="banking"></i>
 		<a href="index.html"><i class="fa fa-search fa-2x fonticon iconcolor"></i></a>
-	</div> 
+	</div>  -->
  <!--  <div class="section navbar-top headerbg">
       <div class="container">
         <div class="row">
@@ -43,7 +98,7 @@
         </div>
       </div>
     </div>  -->
-   <div class="section navbar headerBackground title">
+   <!-- <div class="section navbar headerBackground title">
     </div>
   
    <div class="section" style="display:none;" id="search">
@@ -57,6 +112,9 @@
         </div>
       </div>
     </div>
+	
+	
+     </div>
     <div class="section directories" style="margin-top:30px">
       <div>
         <div class="row">
@@ -67,8 +125,7 @@
 			<div id="title"></div>
 			  <div id="web" class="datapadding"></div>
 				    <p id="phone" class="datapadding"></p>
-                  <!--  <center>  <img id="picture"  class="detail-image img-responsive img-rounded margin" ></center>-->
-<!--One in the main lobby of the Hotel by the Tour Desk and another in the Conference Center next to the Business Center.-->
+                  
                  
            
           </div>
@@ -83,11 +140,43 @@
 		   </div>
 		</div>
 	  </div>
-   </div>
+   </div> -->
 		   
-		   
- 
- 
+
+	
+	 <div class="section"  id="footerimage">
+	<!-- <div style="background:white;" >
+	<center><img id="footerimage" class="footer"></center>
+	</div> -->
+	
+     </div>
+     <div class="section" id="footerText">
+	   
+	 </div> 
+<br>
+ <!-- <div class="section"  id="footerimage"></div> -->
+		<script>
+			/* When the user clicks on the button, 
+			toggle between hiding and showing the dropdown content */
+			function showdropdown() {
+				document.getElementById("myDropdown").classList.toggle("show");
+			}
+
+			// Close the dropdown if the user clicks outside of it
+			window.onclick = function(event) {
+			  if (!event.target.matches('.dropbtn')) {
+
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+				  var openDropdown = dropdowns[i];
+				  if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				  }
+				}
+			  }
+			}
+			</script>
          <script src="js/description.js" type="text/javascript" ></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script src="js/parse.js"></script>

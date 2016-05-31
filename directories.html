@@ -14,7 +14,8 @@
      <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
 
 </head>
-<body onload="myFunction()">
+<body onload="myFunction()" id="locationbackground">
+
 <!--<div class="section navbar-top headerbg">
       <div class="container">
         <div class="row">
@@ -31,21 +32,52 @@
         <div class="row">
           <div class="col-md-12">
 		   <h1 class="text-center backIconHover align" ><a class="btn pull-left" href="home.html" style="display:none;"><i class="fa fa-chevron-circle-left"> Back</i> </a><a href="#"></a></h1>
-            <h1 class="text-center backIconHover locationpadding" id="location"></h1>
-			<p class="text-center backIconHover">Guest Services Directory</p>
+            <p class="text-center backIconHover locationpadding titlestyle " id="location"></p>
+			<p class="text-center backIconHover" class="captionstyle" id="locationcaption"></p>
           </div>
         </div>
       </div>
     </div>
-	<div class="section navbar text-center home-navbar">
-		<a href=""><i class="fa fa-home fa-2x fonticon iconcolor"></i></a>  
-		<!-- <i class="fa fa-bed fa-2x fonticon iconcolor"></i> -->
-		<i class="fa fa-shopping-cart fa-2x fonticon iconcolor" id="food"></i>
-		<i class="fa fa-briefcase fa-2x fonticon iconcolor" id="transport"></i>
-		<i class="fa fa-shirtsinbulk fa-2x fonticon iconcolor" id="banking"></i>
-		<a href="index.html"> <i class="fa fa-search fa-2x fonticon iconcolor"></i> </a>
-	</div> 
- 
+	<!-- <div class="section navbar text-center home-navbar menuicon">
+		<div class="dropdown ">
+					<button onclick="showdropdown()" class="dropbtn"><span class="glyphicon glyphicon-menu-hamburger dropbtn"></span></button>
+					  <div id="myDropdown" class="dropdown-content">
+						<a id="locationMaidDesk"><span class="fa fa-shirtsinbulk" title="Maid Service"></span></a>
+						 <a href="#home"><span class="fa fa-taxi" title="Taxi"></span></a>
+					 <a id="locationBellDesk"><span class="fa fa-briefcase" title="Bellman/Baggage"></span></a>
+					 <a id="locationLocalAttractions"><span class="fa fa-map-marker" title="Local Attractions"></span></a>
+					  <a id="locationHotelDirectory"><span class="fa fa-leanpub" title="Hotel Directory"></span></a>
+					
+					  </div>
+		</div>
+		<a href=""><i class="fa fa-home fa-2x fonticon iconcolor" title="Home"></i></a>  
+		
+		<a  id="locationFrontDesk"><i class="fa fa-cutlery  fa-2x fonticon iconcolor" title="Service/Frontdesk"></i></a>
+		<i class="fa fa-phone fa-2x fonticon iconcolor" id="transport" title="Housephone"></i>
+		<a href="index.html"> <i class="fa fa-sign-out fa-2x fonticon iconcolor" ></i> </a>
+		<img src="images/icons/sos.png">
+	</div>  -->
+    <!-- menu bar -->
+	<div class="section navbar  home-navbar menuicon">
+		<div class="dropdown iconlist icon" >
+					<img onclick="showdropdown()"   src="images/icons/menu.png"class="iconimg dropbtn">
+					  <div id="myDropdown" class="dropdown-content menuItems">
+					  
+						   <!-- <a href=""><img src="images/icons/home.png" class="iconimg" title="Home"><br>Home</a> -->
+						   <a href="" style="text-align:left">Home</a>
+						<!--  <a id="locationMaidDesk"><img src="images/icons/maidservice.png" class="iconimg" title="Maid Service"><br>Maid Service</a>
+						 <a href="#home"><img src="images/icons/taxi.png" class="iconimg" title="Taxi"><br>Taxi</a>
+						 <a id="locationBellDesk"><img src="images/icons/baggage.png" class="iconimg" title="Bellman/Baggage"><br>Bellman/Baggage</a>
+						 <a id="locationLocalAttractions"><img src="images/icons/map.png" class="iconimg" title="Local Attractions"><br>Local Attractions</a>
+						 <a id="locationHotelDirectory"><img src="images/icons/directory.png" class="iconimg" title="Hotel Directory"><br>Hotel Directory</a>  -->
+						 
+					  </div>
+			 <a href=""><img src="images/icons/home.png" class="iconimg" title="Home"></a>
+			<!-- <a  id="locationFrontDesk"><img src="images/icons/frontdesk.png" class="iconimg "title="Service/Frontdesk"></a>
+			<a><img src="images/icons/phone.png" class="iconimg" title="Housephone"></a>
+						 <a id="locationEmergency"><img src="images/icons/sas.png" class="iconimg" title="Emergency"></a> --> 
+		</div>
+	</div>
 
 	 <div class="section">
       <div>
@@ -53,43 +85,107 @@
           <div class="col-md-12 text-center yourSearch">
            
               <input type="text"  onfocus="this.placeholder = ''" id="textbox">
-			<a id="search" class="btn"> <i  class="glyphicon glyphicon-search" style="color:white;font-size:24px;margin-left: -10px" ></i></a>
+			<a id="search" class="btn"> <i  class="glyphicon glyphicon-search" style="color:white;font-size:24px;margin-left: -10px; margin-top:-1px !Important" ></i></a>
 			 <!--  <img src="./images/download.png" > -->
-             
+             <hr style="height:1px; background-color:#fff;margin-top:5px !important; margin-bottom:5px !important">
            </div>
 	     </div>
       </div>
     </div>
+	
 	<div class="section picImageSection fixed-top">
-      <div class="container">
+    <!--   <div class="container"> -->
         <div class="row">
-          <div class="col-md-12 ">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+		  <div class="imgaspects">
+					<center><img class="logo center-block  margin img-responsive " id="locationhotellogo"></center>
+	
+	        </div>
 		   
-           <img class="center-block img-responsive img-rounded margin" id="locationhotellogo">
+           <!-- <img class="center-block img-rounded margin directory-logo" id="locationhotellogo"> -->
           </div>
         </div>
-      </div>
-    </div
+     <!--  </div> -->
+    </div>
 	 <div class="section picImageSection fixed-top">
-      <div class="container">
+    <!--   <div class="container"> -->
         <div class="row">
-          <div class="col-md-12 ">
-		     <img class="logo center-block img-responsive img-rounded margin" id="locationlogo">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+		  <div class="imgaspects">
+					<center><img class="logo center-block  margin img-responsive " id="locationlogo"></center>
+	
+	        </div>
+		     <!-- <img class="logo center-block img-rounded margin directory-logo" id="locationlogo"> -->
           </div>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
 	
-	<div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center " id="locationmessage">
+	
+	<!-- address mapping -->
+	<div class="mapfun">
+	<div class="section " id="geocss" style="margin-top:10px" >
+   <!--  <div class = "row" style="margin-top:10px;"> -->
+   <div class = "col-md-4 col-sm-4 col-xs-4" id="locationgeomap"><br>
+
+<!--             <a onclick="myNavFunc(this.id,this.lang)" id="22" lang="55"><img class = "center-block" src="./images/map.jpg" style="width:25%;" alt = "" > <p class="text-center">directions</p><a> -->
+
+	</div>
+    <div class = "col-md-8 col-sm-8 col-xs-8 geocss"  id="dirlocationdetails" >
+       
+            
+    </div>
+	
+	
+    </div>
+	</div>
+	</div>
+	<!-- welcome message -->
+	<div class="section" id="locationmessage">
+     <!--  <div class="container">
+        <div class="row" id="locationmessage">
+          <div class="col-md-12 text-center " style="font-color:black" id="locationmessage">
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
+	
+	<div class="section" >
+     <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center locationcontent">
+		  <!-- <text>&nbsp&nbsp</text> -->
+		  <br>
+          </div>
+        </div>
+      </div> 
+    </div>
+	 <!-- <div class="section" id="locationhtml">
+	</div> -->
+	
+	<!--  list of dir items -->
 	<div class="section" id="titledir">
-     
+	
+     </div>
+
+<!--  <!--  <div class="row" style="margin-top:82px">
+	<div class="footerWrap"> -->
+	 <div class="section"  id="footerimage">
+	<!-- <div style="background:white;" >
+	<center><img id="footerimage" class="footer"></center>
+	</div> -->
+	
+       </div>
+	   
+    
+	 <div class="section" id="footerText">
+	   
+	 </div> 
+	
+	 
+	<!-- foot image -->
+	
+	
         <!-- <div class="row">
 	
 			<span class="menudir"><img  src="./images/Logo1.png" class="dirlogo"></span>
@@ -102,7 +198,7 @@
 			
         </div> -->
 
-    </div>
+    
   
 	
 	
@@ -174,14 +270,49 @@
       </div>
     </div> -->
 
-	<div ><center><img id="footerimage" class="footer"></center></div>
+		<script>
+		function myNavFunc(lat,lang){
+		allplatforms="http://maps.google.com/maps?q="+lat+","+lang+""
+		iphone="maps://maps.google.com/maps?q="+lat+","+lang+""
+		
+			// If it's an iPhone..
+			if( (navigator.platform.indexOf("iPhone") != -1) 
+				|| (navigator.platform.indexOf("iPod") != -1)
+				|| (navigator.platform.indexOf("iPad") != -1))
+				 window.open(iphone);
+			else
+				 window.open(allplatforms);
+		}
+		</script>
+		<script>
+			/* When the user clicks on the button, 
+			toggle between hiding and showing the dropdown content */
+			function showdropdown() {
+				document.getElementById("myDropdown").classList.toggle("show");
+			}
+
+			// Close the dropdown if the user clicks outside of it
+			window.onclick = function(event) {
+			  if (!event.target.matches('.dropbtn')) {
+
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+				  var openDropdown = dropdowns[i];
+				  if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				  }
+				}
+			  }
+			}
+			</script>
 
 	<!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>-->
-	<script src="js/location.js"></script>
+	<script src="js/location.js" async="async"></script>
    
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-         <script src="js/parse.js"></script>
-     <script src="https://www.parsecdn.com/js/parse-1.2.8.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" async="async"></script>
+         <script src="js/parse.js" async="async"></script>
+     <script src="https://www.parsecdn.com/js/parse-1.2.8.min.js" async="async"></script>
 	 <br>
 </body>
 </html>
