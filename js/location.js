@@ -1,6 +1,6 @@
     var PARSE_APP = "FAbluZyN0hpXGpudGXrt9WOgvUQCxey3KEGALLle";
     var PARSE_JS = "diTLB99p5GHZED8SDzZ4ysNMMyXTXzJOcJi2Qww6";
-	var id,LocationStyleId;
+	var id,LocationStyleid;
 		var dirid=new Array();
 	
 	var locationtitile;
@@ -60,7 +60,7 @@
 								 	} */
 							}
 				          }).then(function(){
-							  console.log(LocationStyleid)
+							
 							 if(LocationStyleid!=undefined){
 									   var locStyle = Parse.Object.extend("Style");
 									   var StyleQuery = new Parse.Query(locStyle);
@@ -253,7 +253,7 @@
 				 locationcountry=hRes[0].Country;
 				 locationgeo=hRes[0].Geopoints;
 				 lstyle=hRes[0].StyleId;
-				 console.log(lstyle)
+				 var parentid=hRes[0].objectId;
 		         //id=result[0].get("Directories");
 	           if(locationLogo!=undefined){
 					 locationimg=locationLogo.url;
@@ -336,6 +336,21 @@
 									  locationgeopoints="display:show;";
 									  styleclass="text-left"
 								  }
+						//template view{}
+						if(lstyle==undefined){
+							
+							 localStorage.setItem( 'parentid',JSON.stringify(parentid));
+							 localStorage.setItem( 'HotelTitle',JSON.stringify(locationtitile));
+							$("#location").html(locationtitile);
+							if((locationaddress1==undefined)&&(locationaddress2==undefined)&&(locationstreet==undefined)&&(locationtown==undefined)&&(locationzip==undefined)&&(locationcountry==undefined)){
+									locationgeopoints="display:none;";
+									$('.mapfun').attr("style",locationgeopoints)
+		                         }
+								if((locationaddress1==undefined)&&(locationaddress2==undefined)&&(locationstreet==undefined)&&(locationtown==undefined)&&(locationzip==undefined)&&(locationcountry==undefined)&&(locationLogo==undefined)&&(locationHotelLogo==undefined)&&(locationMessage==undefined)){
+						locationcontent="display:none;";
+						$('.locationcontent').attr("style",locationcontent)
+		                    }
+						}
 						if(lstyle!=undefined){
 							console.log(lstyle)
 							console.log(localStorage)
