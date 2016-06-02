@@ -186,7 +186,7 @@ function myDescription(){
 				   $('#timings').html(timings);
 				   var description="<div class='section' style='"+dirdescnone+"' >"+
 				   "<div class='container'><div class='row' >"+
-				   "<div class='col-md-12 text-center' style='margin-top:10px;' >"+
+				   "<div class='col-md-12 ' style='margin-top:10px;' >"+
 				   ""+dirdesc+"</div></div></div></div>"
 				   $('#description').html(description);
 				   
@@ -206,7 +206,7 @@ function myDescription(){
 								phoneext[k]=pRes[k].Ext;
 								var brandresult=localStorage.getItem('locationBrandstyle');
 								var bRes=JSON.parse(brandresult);
-								console.log(bRes)
+								
 								if(bRes!=null){
 								var brandButtonColor=bRes[0].BrandButtonColor;
 								var brandFontColor=bRes[0].BrandFontColor;
@@ -268,7 +268,7 @@ function myDescription(){
 			}
 				   
 			  }
-			  if(dRes[i].ParentDirectoryId==id){
+			  if(dRes[i].DirectoryID==id){
 					    dirtitles[i]=dRes[i].Title;
 						dirid[i]=dRes[i].objectId;
 						dirLogo[i]=dRes[i].Picture;
@@ -284,7 +284,7 @@ function myDescription(){
 						 }
 						var brandresult=localStorage.getItem('locationBrandstyle');
 		                var bRes=JSON.parse(brandresult);
-						console.log(bRes)
+						
 						if(bRes!=null){
 							var brandButtonColor=bRes[0].BrandButtonColor;
 						var brandFontColor=bRes[0].BrandFontColor;
@@ -394,7 +394,7 @@ function myDescription(){
 						}
 						var brandresult=localStorage.getItem('locationBrandstyle');
 		                var bRes=JSON.parse(brandresult);
-						console.log(bRes)
+						
 						if(bRes!=null){
 							var brandButtonColor=bRes[0].BrandButtonColor;
 							var brandFontColor=bRes[0].BrandFontColor;
@@ -480,7 +480,7 @@ function myDescription(){
 						}
 						var brandresult=localStorage.getItem('locationBrandstyle');
 		                var bRes=JSON.parse(brandresult);
-						console.log(bRes)
+						
 						if(bRes!=null){
 						var brandButtonColor=bRes[0].BrandButtonColor;
 						var brandFontColor=bRes[0].BrandFontColor;
@@ -601,7 +601,7 @@ function searchField(field){
 						}
 						var brandresult=localStorage.getItem('locationBrandstyle');
 		                var bRes=JSON.parse(brandresult);
-						console.log(bRes)
+						
 						var brandButtonColor=bRes[0].BrandButtonColor;
 						var brandFontColor=bRes[0].BrandFontColor;
 						var brandFontFamily=bRes[0].BrandFontFamily;

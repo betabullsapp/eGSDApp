@@ -16,7 +16,7 @@
 		});
 			var hotelresult=localStorage.getItem('Hotel');
 			var hRes=JSON.parse(hotelresult);
-		
+			//console.log(hRes.length)
 			/* if(navigator.onLine){
 				alert("dasfdg")
 			} */
@@ -24,12 +24,8 @@
 				
 				localStorage.clear();
 				
-					  
-					  LocationFun();
-					  
+					  Parse.initialize(PARSE_APP,PARSE_JS);
 					 //getting hotel info 
-					 function LocationFun(){
-						 Parse.initialize(PARSE_APP,PARSE_JS);
 					   var locItem = Parse.Object.extend("Location");
 					   var locQuery = new Parse.Query(locItem);
 					   locQuery.equalTo('objectId',id);
@@ -43,9 +39,6 @@
 									tempQuery.equalTo('objectId',id);
 								    tempQuery.find().then(function(result){
 									localStorage.setItem( 'Hotel',JSON.stringify(result));
-									BrandStyleFun();
-								
-									
 												  });
 												  
 									}
@@ -54,33 +47,32 @@
 								  locationstyle=result[0].get("StyleId");
 								     LocationStyleid=locationstyle.id 
 									
-									
-									BrandStyleFun();
+									/* if(LocationStyleid!=undefined){
+									   var locStyle = Parse.Object.extend("Style");
+									   var StyleQuery = new Parse.Query(locStyle);
+									   StyleQuery.equalTo('objectId',LocationStyleid);
+									   StyleQuery.find().then(function(result1){
+										   console.log(result1)
+										   localStorage.setItem('locationBrandstyle',JSON.stringify(result1));
+										   var val=localStorage.getItem('locationBrandstyle');
+							               var styleId=JSON.parse(val);
+								             console.log(styleId)
+									   });
+								 	} */
 							}
-				          })
-						  
-					 }
-					 
-						function BrandStyleFun(){	
-						
+				          }).then(function(){
+							
 							 if(LocationStyleid!=undefined){
-								 Parse.initialize(PARSE_APP,PARSE_JS);
 									   var locStyle = Parse.Object.extend("Style");
 									   var StyleQuery = new Parse.Query(locStyle);
 									   StyleQuery.equalTo('objectId',LocationStyleid);
 									   StyleQuery.find().then(function(result1){
 										  
 										   localStorage.setItem('locationBrandstyle',JSON.stringify(result1));
-										   DirectoryItemFun()
 									   });
 									}
-									else{
-										DirectoryItemFun()
-									}
-						}
+						  }).then(function(){ 
 						  //getting directories
-						 function DirectoryItemFun(){
-							 Parse.initialize(PARSE_APP,PARSE_JS);
 						    var dItem = Parse.Object.extend("DirectoryItem");
 							var dItemQuery = new Parse.Query(dItem);
 							dItemQuery.limit(1000);
@@ -89,23 +81,15 @@
 							dItemQuery.ascending("CustomizedOrder");
 							dItemQuery.find({
 								success: function(dRes){
-									localStorage.setItem('directory',JSON.stringify(dRes
-									
-									));
-									HotelMenuListFun()
+									localStorage.setItem('directory',JSON.stringify(dRes));
 								}
-								
 								});
-								
-							}
-							//getting menu icons
-							function HotelMenuListFun(){
-								Parse.initialize(PARSE_APP,PARSE_JS);
+							}).then(function(){
+							//getting menu icons							  
 							 var MenuItem = Parse.Object.extend("HotelMenuList");
 							   var MenuQuery = new Parse.Query(MenuItem);
 							   MenuQuery.equalTo('HotelId',id);
-							   MenuQuery.find({
-								   success: function(menuRes){
+							   MenuQuery.find().then(function(menuRes){
 								   localStorage.setItem( 'HotelMenu',JSON.stringify(menuRes));
 								   	  var menuDesc=new Array();
 									  var menuSequence=new Array();
@@ -207,14 +191,10 @@
 											}
 											 localStorage.setItem('accessicons',JSON.stringify(toticonlist));
 										
-										PhonesFun()				
-								}
-							   });
-								
-							}
-							function PhonesFun(){
+														
+								});
+							}).then(function(){ 
 						  //getting phones
-						  Parse.initialize(PARSE_APP,PARSE_JS);
 							 var pItem = Parse.Object.extend("Phones");
 							  var pItemQuery = new Parse.Query(pItem);
 							  pItemQuery.limit(1000);
@@ -222,14 +202,10 @@
 							  pItemQuery.find({
 							   success: function(pRes){
 								   localStorage.setItem('phones',JSON.stringify(pRes));
-							    MenuFun()
 							   }
 							   });
-							  
-						  }
+						  }).then(function(){
 							  //geeting menu
-							function MenuFun(){
-								Parse.initialize(PARSE_APP,PARSE_JS);
 							  var mItem = Parse.Object.extend("Menu");
 							  var mItemQuery = new Parse.Query(mItem);
 							  mItemQuery.limit(1000);
@@ -238,13 +214,10 @@
 							  mItemQuery.find({
 							   success: function(mRes){
 								   localStorage.setItem('menu',JSON.stringify(mRes))
-								   StyleFun()
 								}
 							   });
-						  }
+						  }).then(function(){
 							  //getting Styles
-							function StyleFun(){
-								Parse.initialize(PARSE_APP,PARSE_JS);
 							  var sItem = Parse.Object.extend("Style");
 							  var sItemQuery = new Parse.Query(sItem);
 							  sItemQuery.limit(1000);
@@ -252,27 +225,34 @@
 							  sItemQuery.find({
 							   success: function(sRes){
 								   localStorage.setItem('Style',JSON.stringify(sRes));
-								   
-									showHotel();
+								    //sleep(10000);
+									
 							   }
 							  });
-						  }
+						  }).then(function(){
 							 
+						  });
 						  
-						  
-							
+					showHotel()					
 			}
 			else if((hRes!=null)&&(hRes.length>0)&&(hRes[0].objectId==id)){
 			//localstorage hotel	
 			  showHotel();
 			}
-
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 	   function	showHotel(){
 		
 				//about hotel
 			var hotelresult=localStorage.getItem('Hotel');
 			var hRes=JSON.parse(hotelresult);
-			
+			console.log(hRes)
 			if(hRes[0]!=null){
 				var locationimg,locationhotelimg,loctionBackground,locTextFont,	locationMsg,locFooterBackground,footerimg,locCaptionstyle;
 				 locationtitile=hRes[0].Name;
@@ -501,7 +481,7 @@
 		var dirresult=localStorage.getItem('directory');
 		var dRes=JSON.parse(dirresult);
 		if(dRes!=null){
-			
+			console.log(dRes)
 			var dirtitle=new Array();
 			var dirLogo=new Array();
 			var dirid=new Array();
@@ -512,7 +492,7 @@
 				for(var i=0;i<dRes.length;i++){
 			 
 			if(dRes[i].DirectoryID==id){
-			
+				console.log(dRes[i].Title)
 							dirtitle[i]=dRes[i].Title;
 							dirid[i]=dRes[i].objectId;
 							dirLogo[i]=dRes[i].Picture;
@@ -623,7 +603,7 @@
 						var brandFontColor=bRes[0].BrandFontColor;
 						var brandFontFamily=bRes[0].BrandFontFamily;
 						}
-						 titleval="<div class='row'><span class='menudir'><img  src='"+dirurl[i]+"' class='dirlogo' style='"+dirlogoDis[i]+"'></span><span><a style='"+dirbutton[i]+"' href='description.html?id="+dirid[i]+"&header="+dirtitle[i]+"'><button class='dirbutton' style='background-color:#"+brandButtonColor+";color:#"+brandFontColor+";font-family:"+brandFontFamily+";'>"+dirtitle[i]+"</button></a></span></div>";	
+						 titleval="<div class='row'><span class='menudir'><img  src='"+dirurl[i]+"' class='dirlogo' style='"+dirlogoDis[i]+"'></span><span><a style='"+dirbutton[i]+"' href='description.html?title="+locationtitile+"&id="+dirid[i]+"&header="+dirtitle[i]+"'><button class='dirbutton' style='background-color:#"+brandButtonColor+";color:#"+brandFontColor+";font-family:"+brandFontFamily+";'>"+dirtitle[i]+"</button></a></span></div>";	
 					titletotval=titletotval+titleval;
 					  
 					}
