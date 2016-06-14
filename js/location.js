@@ -20,7 +20,10 @@
 			/* if(navigator.onLine){
 				alert("dasfdg")
 			} */
-			if(navigator.onLine){
+			
+			
+		if(navigator.onLine){ 
+			
 				
 				localStorage.clear();
 				
@@ -43,12 +46,16 @@
 									tempQuery.equalTo('objectId',id);
 								    tempQuery.find().then(function(result){
 									localStorage.setItem( 'Hotel',JSON.stringify(result));
-									BrandStyleFun();
-								
-									
-												  });
+									 locationstyle=result[0].get("StyleId");
+											 if(locationstyle!=undefined){
+												 LocationStyleid=locationstyle.id 
+												 BrandStyleFun();
+											 }else{
+												 DirectoryItemFun();
+											 }
+									 });
 												  
-									}
+								}
 							else{
 								localStorage.setItem( 'Hotel',JSON.stringify(result));
 								  locationstyle=result[0].get("StyleId");
@@ -261,12 +268,13 @@
 						  
 						  
 							
-			}
+			 }
 			else if((hRes!=null)&&(hRes.length>0)&&(hRes[0].objectId==id)){
-			//localstorage hotel	
+			//localstorage hotel
+					
 			  showHotel();
 			}
-
+		
 	   function	showHotel(){
 		
 				//about hotel
@@ -274,7 +282,7 @@
 			var hRes=JSON.parse(hotelresult);
 			
 			if(hRes[0]!=null){
-				var locationimg,locationhotelimg,loctionBackground,locTextFont,	locationMsg,locFooterBackground,footerimg,locCaptionstyle;
+				var locationimg,locationhotelimg,loctionBackground,locTextFont,	locationMsg,locFooterBackground,footerimg,locCaptionstyle,locationgap,locationbr;
 				 locationtitile=hRes[0].Name;
 				 locationcaption=hRes[0].hotelCaption;
 				 locationLogo=hRes[0].Logo;
@@ -296,7 +304,8 @@
 					 locationimg=locationLogo.url;
 					
 					  imgstyle="margin-top:5px;"
-						$('#locationlogo').attr("src",locationimg).attr("style",imgstyle);
+						/* 	$('#locationlogo').attr("src",locationimg).attr("style",imgstyle);  */
+					$('#locationlogo').attr("src",locationimg)
 				 }
 				 else{
 					  locationimg='display:none;margin-top:0px;margin-bottom:0px !important';
@@ -312,42 +321,50 @@
 								$('#locationhotellogo').attr("style",locationhotelimg)
 						 }
 		
-		
-					   if(locationaddress1==undefined){
-									 locationadd1='display:none;';
-								  }else{
-									  locationadd1="";
-								  }
+						if((locationaddress1==undefined)||(locationaddress1=="")){
+					 locationadd1='display:none;';
+		          }else{
+					  locationadd1="";
+				  }
 
-						if(locationaddress2==undefined){
-									 locationadd2="display:none;";
-								  }else{
-									  locationadd2="";
-								  }
-								  
-						if(locationstreet==undefined){
-									 locationst="display:none;";
-								  }
-								  else{
-									  locationst="";
-								  }
-									
-						if(locationtown==undefined){
-									 locationtwn="display:none;";
-								  }
-								  else{
-									  locationtwn="";
-								  }
-						if(locationzip==undefined){
-									 locationzipcode="display:none;";
-								  }else{
-									  locationzipcode="";
-								  }
-						if(locationcountry==undefined){
-									 locationctry="display:none;";
-								  }else{
-									  locationctry="";
-								  }
+		if((locationaddress2==undefined)||(locationaddress2=="")){
+					 locationadd2="display:none;";
+		          }else{
+					  locationadd2="";
+				  }
+				  
+        if((locationstreet==undefined)||(locationstreet=="")){
+					 locationst="display:none;";
+					locationgap="display:none";
+		          }
+				  else{
+					  locationst="";
+				  }
+		if(((locationstreet=="")&&(locationtown==""))||((locationstreet==undefined)&&(locationtown==undefined))){
+			locationbr="display:none";
+		}
+		if((locationstreet=="")||(locationtown=="")){
+			locationgap="display:none";
+		}		  	
+		if((locationtown==undefined)||(locationtown=="")){
+					 locationtwn="display:none;";
+					locationgap="display:none";
+		          }
+				  else{
+					  locationtwn="";
+				  }
+		if((locationzip==undefined)||(locationzip=="")){
+					 locationzipcode="display:none;";
+		          }else{
+					  locationzipcode="";
+				  }
+		if((locationcountry==undefined)||(locationcountry=="")){
+					 locationctry="display:none;";
+		          }else{
+					  locationctry="";
+				  }
+				  
+					   
 								  
 						if((locationaddress1==undefined)&&(locationaddress2==undefined)&&(locationstreet==undefined)&&(locationtown==undefined)&&(locationzip==undefined)&&(locationcountry==undefined)){
 							locationgeopoints="display:none;";
@@ -433,7 +450,13 @@
 								   locCaption="<text style='color:#"+locCaptionColor+";font-size:"+locCaptionFont+";font-family:"+locCaptionFontFamily+"'>"+locationcaption+"</text>"
 								   localStorage.setItem( 'HotelCaption',JSON.stringify(locCaption));
 								   $("#locationcaption").html(locCaption);
-			
+									 if(locCaptionColor==undefined){
+									   var SearchColor="color:#ffffff;font-size:24px;margin-left: -10px; margin-top:-1px !Important"
+									$('#SearchColor').attr('style',SearchColor)
+								   }else{
+									   var SearchColor="color:#"+locCaptionColor+";font-size:24px;margin-left: -10px; margin-top:-1px !Important"
+									$('#SearchColor').attr('style',SearchColor)
+								   }
 								   
 								}
 							   if(locBackground!=undefined){
@@ -483,19 +506,21 @@
 					   
 						 var dirlocationdetails="<address class='"+styleclass+"' style='color:#"+locAddressFontColor+";font-size:"+locAddressFont+";font-family:"+locAddressFontFamily+"'>"+
 						 addbr+
-						 "<text style='"+locationadd1+"'>"+locationaddress1+"</text><br>"+
-						 "<text style='"+locationadd2+"'>"+locationaddress2+"</text><br>"+
-						 "<text style='"+locationst+"'>"+locationstreet+"<text style='"+locationtwn+"'>, "+locationtown+"</text></text><br>"+
-						 "<text style='"+locationzipcode+"'>"+locationzip+"</text><br>"+"<text style='"+locationctry+"'>"+locationcountry+"</text></address>"
+						 "<text style='"+locationadd1+"'>"+locationaddress1+"</text><br style='"+locationadd1+"'>"+
+						 "<text style='"+locationadd2+"'>"+locationaddress2+"</text><br style='"+locationadd2+"'>"+
+						 "<text style='"+locationst+"'>"+locationstreet+"</text><text style='"+locationgap+"'>, </text><text style='"+locationtwn+"'>"+locationtown+"</text><br style='"+locationbr+"'>"+
+						 "<text style='"+locationzipcode+"'>"+locationzip+"</text><br style='"+locationzipcode+"'>"+"<text style='"+locationctry+"'>"+locationcountry+"</text></address>"
 						 	$("#dirlocationdetails").html(dirlocationdetails);
+							var geomap="<a style='"+locationgeopoints+"' onclick='myNavFunc(this.id,this.lang)' id='"+locationlat+"' lang='"+locationlang+"' class='mapPadding'>"+
+		 "<img class = 'imgaspects map-logo' style='cursor:pointer' src='./images/map.jpg'  alt = '' >"+
+		 "<p  class='mapPadding text-center' style='color:#"+locAddressFontColor+";font-size:"+locAddressFont+";font-family:"+locAddressFontFamily+";cursor:pointer' > Map</p><a>"
+		$("#locationgeomap").html(geomap);
+		localStorage.setItem( 'parentid',JSON.stringify(id));
+		
 									}
 								
 						}
-						var geomap="<a style='"+locationgeopoints+"' onclick='myNavFunc(this.id,this.lang)' id='"+locationlat+"' lang='"+locationlang+"' class='mapPadding'>"+
-		 "<img class = 'imgaspects map-logo' style='cursor:pointer' src='./images/map.jpg'  alt = '' >"+
-		 "<p  class='mapPadding text-center' > Map</p><a>"
-		
-		localStorage.setItem( 'parentid',JSON.stringify(id));
+						
 		
 			}//end of location
 		var dirresult=localStorage.getItem('directory');
