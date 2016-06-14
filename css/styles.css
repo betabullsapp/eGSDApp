@@ -94,10 +94,10 @@ input[type="text"]:-ms-input-placeholder {  /* interner explorer*/
 
 /* List Styeles*/
 ul{
-  padding-left: 0;
+ /*  padding-left: 0; */
 }
 ul li{
-  list-style: none;
+ /*  list-style: none; */
 }
 .mainStyleList{
   background-color: #b2b2b2;
@@ -147,11 +147,15 @@ a, a:visited,a:link,a:active, a:hover{
 	font-size:19px;
 	margin:3px 35px 3px 0;
 }
+
 #location {
 	/* font-size:15px; */
 /* 	margin:15px 57px 7px 0; */
-   margin:10px;
+   margin:0px 0 0 0;
 	/* font-weight:bold; */
+}
+#locationcaption{
+	margin:0 0 0px 0;
 }
 .logo-font a{
 	background-color: #b8b8b8;
@@ -399,10 +403,13 @@ margin: 0 auto;
 } 
 
 
-.navbar { min-height:32px !important; }
+.navbar { min-height:18px !important; }
 
 #textbox {padding:0px !important; height:26px !important; }
 
 .ui-btn-up-c {
 	text-shadow:none !important;
+}
+.descmenu{
+	padding:0 8px 0 8px !important;
 }
